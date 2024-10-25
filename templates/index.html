@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wuthering Waves Database</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <link rel="stylesheet" href="static/styles.css">
+
+</head>
+<body>
+    <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.85); padding: 10px 20px">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light fs-5" href="#">Wuthering Waves</a>
+      <div class="container-fuild">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4" >
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Resonators</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Lore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Regions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Top-Up Center</a>
+          </li>
+        </ul>
+      </div>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-info btn-primary text-light" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Main Body -->
+  <div class="add-res"
+        style="background-image: url({{ url_for('static', filename='images/Jiyan-wutherign-waves-cover.jpg') }}),
+               linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1) 99.9%);
+               padding-top: 100px;">
+    <!-- Input -->
+    <div class="container" style="max-width: 600px">
+      <form action="{{ url_for('create') }}" method="POST" class="form-control bg-dark shade px-3" enctype="multipart/form-data">
+        <h1 class="text-center text-3d">Add New Resonator</h1>
+        <div class="d-flex justify-items-center align-items-center mb-3 mt-1">
+          <label for="resonator" class="w-25 fs-5">Resonator Name : </label>
+          <input type="text" name="resonator" class="form-control w-75" required>
+        </div>
+        <div class="d-flex justify-items-center mb-3">
+          <label for="gender" class="form-label w-25 fs-5">Gender</label>
+          <select name="gender" class="form-select w-75">
+            <option value="">Default</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="d-flex justify-items-center mb-3">
+          <label for="star" class="form-label w-25 fs-5">Star (⭐)</label>
+          <select name="star" class="form-select w-75">
+            <option value="">Default</option>
+            <option value="Star5">5 Stars</option>
+            <option value="Star4">4 Stars</option>
+            <option value="Star3">3 Stars</option>
+            <option value="Star2">2 Stars</option>
+            <option value="Star1">1 Star</option>
+          </select>
+        </div>
+        <div class="d-flex justify-items-center mb-3">
+          <label for="element" class="form-label w-25 fs-5">Element</label>
+          <select name="element" class="form-select w-75">
+            <option value="">Default</option>
+            <option value="Glacio">Glacio ❄️</option>
+            <option value="Fusion">Fusion 🔥</option>
+            <option value="Electro">Electro ⚡</option>
+            <option value="Aero">Aero 💨</option>
+            <option value="Specter">Specter ☀️</option>
+            <option value="Havoc">Havoc 🌑</option>
+          </select>
+        </div>
+        <div class="d-flex justify-items-center mb-3">
+          <label for="weapon" class="form-label w-25 fs-5">Weapon</label>
+          <select name="weapon" class="form-select w-75">
+            <option value="">Default</option>
+            <option value="Broadblade">Broadblade</option>
+            <option value="Gauntlets">Gauntlets</option>
+            <option value="Pistols">Pistols</option>
+            <option value="Rectifier">Rectifier</option>
+            <option value="Sword">Sword</option>
+          </select>
+        </div>
+        <div class="d-flex justify-items-center mb-3">
+          <label for="inputGroupFile01" class="form-label w-25 fs-5">Image</label>
+          <input type="file" name="file" class="form-control w-75" id="inputGroupFile01" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Add</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Display Table -->
+  <div class="res-list"
+       style="background-image: url({{ url_for('static', filename='images/wuthering-waves-img1.jpeg') }}),
+              linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 99.9%)">
+    <div class="container">
+      <h2 class="my-5 text-3d">Resonator Database</h2>
+      <table class="table table-striped table-dark table-bordered align-middle fs-4 shade">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Resonator</th>
+            <th>Gender</th>
+            <th>Star (⭐)</th>
+            <th>Element</th>
+            <th>Weapon</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        {% for resonance in resonances %}
+        <tbody>
+          <tr style="height: 125px;">
+            <td>{{ resonance[0] }}</td>
+            <td>{{ resonance[1] }}</td>
+            <td>{{ resonance[2] }}</td>
+            <td>
+              {% if resonance[3] in [5, 4, 3, 2] %}
+                {% for i in range(resonance[3]) %}
+                  ⭐
+                {% endfor %}
+              {% else %}
+                ⭐
+              {% endif %}
+            </td>
+            <td>{{ resonance[4] }}</td>
+            <td>{{ resonance[5] }}</td>
+            <td><img src="{{ url_for('upload', filename=resonance[6]) }}" alt="{{ resonance[1] }}" width="75"></td>
+            <td class="container-fuild">
+              <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modaledit{{ resonance[0] }}">Edit</a>
+              <a href="{{ url_for('delete', ids=resonance[0]) }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+
+  <!-- Alert Modal -->
+    {% for resonance in resonances %}
+    <div id="modaledit{{ resonance[0] }}" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content w-auto h-auto text-white shade">
+          <!-- Header -->
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="editModalLabel{{  resonance.id }}">Edit Resonanace</h5>
+            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"aria-label="Close"></button>
+          </div>
+          <!-- Body -->
+          <div class="modal-body p-4 bg-dark d-flex flex-column">
+            <form action="{{ url_for('update', ids=resonance[0]) }}" method="POST" enctype="multipart/form-data">
+              <div class="d-flex align-items-center justify-items-center gap-2">
+                <label for="resonator">Resonator Name</label>
+                <input type="text" name="resonator" value="{{ resonance[1] }}" class="form-control" required>
+              </div>
+              <br>
+              <div class="d-flex align-items-center justify-items-center gap-2">
+                <label for="gender" class="w-25">Gender</label>
+                <select name="gender" class="form-control w-75">
+                  <option value="Default">Default</option>
+                  <option value="Male"   {% if resonance[2] == "male" %}   selected{% endif %}>Male</option>
+                  <option value="Female" {% if resonance[2] == "female" %} selected{% endif %}>Female</option>
+                </select>
+              </div>
+              <br>
+              <div class="d-flex align-items-center justify-items-center gap-2">
+                <label for="star" class="w-25">Star (⭐)</label>
+                <select name="star" class="form-control w-75">
+                  <option value="Default">Default</option>
+                  <option value="Star5" {% if resonance[3] == "Star5" %} selected{% endif %}>5 Stars</option>
+                  <option value="Star4" {% if resonance[3] == "Star4" %} selected{% endif %}>4 Stars</option>
+                  <option value="Star3" {% if resonance[3] == "Star3" %} selected{% endif %}>3 Stars</option>
+                  <option value="Star2" {% if resonance[3] == "Star2" %} selected{% endif %}>2 Stars</option>
+                  <option value="Star1" {% if resonance[3] == "Star1" %} selected{% endif %}>1 Star</option>
+                </select>
+              </div>
+              <br>
+              <div class="d-flex align-items-center justify-items-center gap-2">
+                <label for="element" class="w-25">Element</label>
+                <select name="element" class="form-control w-75">
+                  <option value="Default">Default</option>
+                  <option value="Glacio"  {% if resonance[4] == "Glacio" %}  selected{% endif %}>Glacio ❄️</option>
+                  <option value="Fusion"  {% if resonance[4] == "Fusion" %}  selected{% endif %}>Fusion 🔥</option>
+                  <option value="Electro" {% if resonance[4] == "Electro" %} selected{% endif %}>electro ⚡</option>
+                  <option value="Aero"    {% if resonance[4] == "Aero" %}    selected{% endif %}>Aero 💨</option>
+                  <option value="Specter" {% if resonance[4] == "Specter" %} selected{% endif %}>Specter ☀️</option>
+                  <option value="Havoc"   {% if resonance[4] == "Havoc" %}   selected{% endif %}>Havoc 🌑</option>
+                </select>
+              </div>
+              <br>
+              <div class="d-flex align-items-center justify-items-center gap-2">
+                <label for="weapon" class="w-25">Weapon</label>
+                <select name="weapon" class="form-control w-75">
+                  <option value="Default">Default</option>
+                  <option value="Broadblade" {% if resonance[5] == "Broadblade" %} selected{% endif %}>Broadblade</option>
+                  <option value="Gauntlets" {% if resonance[5] == "Gauntlets" %} selected{% endif %}>Gauntlets</option>
+                  <option value="Pistols" {% if resonance[5] == "Pistols" %} selected{% endif %}>Pistols</option>
+                  <option value="Recifier" {% if resonance[5] == "Recifier" %} selected{% endif %}>Recifier</option>
+                  <option value="Sword" {% if resonance[5] == "Sword" %} selected{% endif %}>Sword</option>
+                </select>
+              </div>
+              <br>
+              <div class="d-flex align-items-center justify-items-center gap-2">
+                <label for="file" class="w-25">Image</label>
+                <input type="file" name="file" value="{{ resonance[6] }}" class="form-control w-75" accept="image/*">
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary mt-4">Update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-3>
+    <div class="container">
+      <p class="text-center">Copyright © Resonator Database 2024</p>
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>About Us</h3>
+          <p>
+            We're a dedicated community of Wuthering Waves enthusiasts who share a love for resonators.
+            Our website is designed to foster a collaborative space where players can connect, 
+            share knowledge, and discuss all things resonators. From the latest updates to in-depth guides, 
+            we've got you covered. Join our community and let's explore the world of Wuthering Waves together!
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h3>Contact</h3>
+          <p>Address: Cambodia, Phnom Penh</p>
+          <p>Phone: 012 345 6789</p>
+          <p>Email: kurogame@gmail.com</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Follow Us</h3>
+          <i class="fa-brands fa-x-twitter"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-youtube"></i>
+          <i class="fa-brands fa-discord"></i>
+          <i class="fa-brands fa-reddit"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>    
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>&copy; Wuthering Waves Database</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+h1{
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+}
+
+.title-hover:hover{
+  color: blue;
+  transition: color 0.1s ease-in;
+}
+
+.add-res{
+  width: 100%;
+  padding-bottom: 250px;
+  background-size: cover;
+  background-blend-mode: multiply;
+  /* background-position: center; */
+}
+.form-label{
+  color: #fff;
+}
+.form-select{
+  cursor: pointer;
+}
+.shade{
+  color: #fff;
+  border: 1px solid #fff;
+  opacity: 0.9;
+  box-shadow: 0 0 5px #fff;
+}
+
+.form-select{
+  background-color: hsla(0, 0%, 100%, 0.9);
+  color: black;
+  border: none;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+
+.res-list{
+  width: 100%;
+  padding: 20px;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position: center;
+  text-align: center;
+}
+.text-3d{
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3),
+               2px 2px 1px rgba(255, 255, 255, 0.3);
+}
