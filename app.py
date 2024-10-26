@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, send_from_directory, send_file
+from flask import Flask, render_template, request, url_for, redirect, send_from_directory
 from flask_mysqldb import MySQL
 import os
 
@@ -15,7 +15,7 @@ mysql = MySQL(app)
 
 # region Config File
 UPLOAD_FOLDER = 'static/uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp','gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
